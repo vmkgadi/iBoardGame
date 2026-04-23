@@ -6,10 +6,16 @@ pipeline {
         maven 'maven3'
     }
     
-    stages {   
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/vmkgadi/iBoardGame.git'
+            }
+        }
+
         stage('Compile') {
             steps {
-            sh 'mvn compile'
+                sh 'mvn compile'
             }
         }
         
